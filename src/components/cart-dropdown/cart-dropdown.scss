@@ -15,7 +15,27 @@
     height: 240px;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      width: 2px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #00000050;
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #00000030;
+    }
   }
 
   button {
