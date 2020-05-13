@@ -5,9 +5,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  box-shadow: 0px 0px 5px 1px #00000050;
   margin: 0 7.5px 15px;
   overflow: hidden;
+  border-radius: 15px;
 
   &:hover {
     cursor: pointer;
@@ -40,6 +41,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    border-radius: 15px;
   }
 
   .content {
@@ -49,10 +51,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
+    box-shadow: 0px 0px 5px 1px #00000050;
     background-color: white;
     opacity: 0.7;
     position: absolute;
+    border-radius: 5px;
 
     .title {
       font-weight: bold;
