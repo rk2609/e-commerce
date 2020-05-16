@@ -17,7 +17,7 @@ const App = () => {
     dispatch(checkUserSession());
   }, [dispatch]);
 
-  const currentUser = useSelector(selectCurrentUser);
+  const currentUserObject = useSelector(selectCurrentUser);
 
   return (
     <div>
@@ -28,7 +28,9 @@ const App = () => {
         <Route
           exact
           path="/signin"
-          render={() => (currentUser ? <Redirect to="/" /> : <SignInPage />)}
+          render={() =>
+            currentUserObject ? <Redirect to="/" /> : <SignInPage />
+          }
         />
         <Route exact path="/contact" component={ContactPage} />
         <Route exact path="/checkout" component={CheckOutPage} />
