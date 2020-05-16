@@ -3,9 +3,11 @@ import "./sign-up.scss";
 import FormInput from "../form-input/form-input";
 import CustomButton from "../custom-button/custom-button";
 import { signUpStart } from "../../redux/user/user-actions";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
-const SignUp = ({ signUpStart }) => {
+const SignUp = () => {
+  const dispatch = useDispatch();
+
   const [userDetails, setDetails] = useState({
     displayName: "",
     email: "",
@@ -23,7 +25,7 @@ const SignUp = ({ signUpStart }) => {
       return;
     }
 
-    signUpStart({ displayName, email, password });
+    dispatch(signUpStart({ displayName, email, password }));
   };
 
   const handleChange = (event) => {
@@ -74,8 +76,5 @@ const SignUp = ({ signUpStart }) => {
     </div>
   );
 };
-const mapDispatchToProps = (dispatch) => ({
-  signUpStart: (userCredentials) => dispatch(signUpStart(userCredentials)),
-});
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default SignUp;
