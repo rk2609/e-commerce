@@ -1,26 +1,33 @@
 import React from "react";
 import "./collection.scss";
 import CollectionItem from "../../components/collection-item/collection-item";
-import { connect } from "react-redux";
-import { selectCollection } from "../../redux/shop/shop-selectors";
+import { useSelector } from "react-redux";
+import {
+  selectCollection,
+  selectIsCollectionsLoaded,
+} from "../../redux/shop/shop-selectors";
+import { useParams } from "react-router-dom";
+import Spinner from "../../components/with-spinner/spinner";
 
-const CollectionPage = ({ collection }) => {
-  const { title, items } = collection;
+const CollectionPage = () => {
+  const isLoading = useSelector(selectIsCollectionsLoaded);
+  const params = useParams();
+  const collection = useSelector((state) =>
+    selectCollection(params.collectionId)(state)
+  );
 
-  return (
+  return isLoading ? (
     <div className="collection-page">
-      <h2 className="title">{title}</h2>
+      <h2 className="title">{collection.title}</h2>
       <div className="items">
-        {items.map((item) => (
+        {collection.items.map((item) => (
           <CollectionItem key={item.id} item={item} />
         ))}
       </div>
     </div>
+  ) : (
+    <Spinner />
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  collection: selectCollection(ownProps.match.params.collectionId)(state),
-});
-
-export default connect(mapStateToProps)(CollectionPage);
+export default CollectionPage;
