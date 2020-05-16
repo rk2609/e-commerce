@@ -36,6 +36,7 @@ const StripeCheckOutButton = ({ price }) => {
       panelLabel="Pay Now"
       token={onToken}
       stripeKey={publishableKey}
+      currency="INR"
     />
   );
 };
